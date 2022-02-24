@@ -41,7 +41,7 @@ This will be the image used in the next steps.
 Step 3 - Test the Container Image
 ---------------------------------
 
-The steps below that use ansible-runner use the [demo](https://github.com/ansible/ansible-runner/tree/devel/demo) sample private data directory (or a copy of it) that is included with the [ansible-runner](https://github.com/ansible/ansible-runner) repository. It contains a [test.yml](https://github.com/ansible/ansible-runner/blob/devel/demo/project/test.yml) playbook to run, and is used to generate artifact files when processing the returned data.
+The steps below that use `ansible-runner` use the [demo](https://github.com/ansible/ansible-runner/tree/devel/demo) sample private data directory (or a copy of it) that is included with the [ansible-runner](https://github.com/ansible/ansible-runner) repository. It contains a [test.yml](https://github.com/ansible/ansible-runner/blob/devel/demo/project/test.yml) playbook to run, and is used to generate artifact files when processing the returned data.
 
 * Start receptor in a container named “_server_”:
 
@@ -49,25 +49,25 @@ The steps below that use ansible-runner use the [demo](https://github.com/ansibl
   $ podman run -p 2222:2222 –rm –name server receptor:sdk
 ```
 
-* Use ansible-runner to create a work payload:
+* Use `ansible-runner` on your local machine to create a work payload:
 
 ```
   $ ansible-runner transmit demo -p test.yml > /tmp/mypayload
 ```
 
-* Use receptorctl on the container to submit the job:
+* Use `receptorctl` within the container to submit the job:
 
 ```
   $ cat /tmp/mypayload | podman exec -i server receptorctl --socket=tcp://localhost:2222 work submit mycommand -p - -f > /tmp/response
 ```
 
-* Alternatively, if you have receptorctl available on your local machine:
+* Alternatively, if you have `receptorctl` available on your local machine:
 
 ```
   $ receptorctl --socket=tcp://localhost:2222 work submit mycommand -p /tmp/mypayload -f > /tmp/response
 ```
 
-* Use ansible-runner to process the response:
+* Use `ansible-runner` on your local machine to process the response:
 
 ```
   $ ansible-runner process demo < /tmp/response
