@@ -41,10 +41,7 @@ This will be the image used in the next steps.
 Step 3 - Test the Container Image
 ---------------------------------
 
-The steps below that use ansible-runner use the _demo_ sample private data
-directory (or a copy of it) that is included with the ansible-runner repository.
-It contains a _test.yml_ playbook to run, and is used to generate artifact files
-when processing the returned data.
+The steps below that use ansible-runner use the [demo](https://github.com/ansible/ansible-runner/tree/devel/demo) sample private data directory (or a copy of it) that is included with the [ansible-runner](https://github.com/ansible/ansible-runner) repository. It contains a [test.yml](https://github.com/ansible/ansible-runner/blob/devel/demo/project/test.yml) playbook to run, and is used to generate artifact files when processing the returned data.
 
 * Start receptor in a container named “_server_”:
 
