@@ -68,19 +68,14 @@ a Unix socket (`/tmp/receptor.sock`) for client connections. You may use either.
   $ ansible-runner transmit demo -p test.yml > /tmp/mypayload
 ```
 
-* Use `receptorctl` within the container to submit the job via TCP:
+* Use `receptorctl` within the container to submit the job (pick either TCP or Unix socket):
 
 ```
   $ cat /tmp/mypayload | podman exec -i server receptorctl --socket=tcp://localhost:2222 work submit mycommand -p - -f > /tmp/response
-```
-
-* Use `receptorctl` within the container to submit the job via Unix socket:
-
-```
   $ cat /tmp/mypayload | podman exec -i server receptorctl --socket=/tmp/receptor.sock work submit mycommand -p - -f > /tmp/response
 ```
 
-* Alternatively, if you have `receptorctl` available on your local machine:
+* Alternatively, use `receptorctl` on your local machine:
 
 ```
   $ receptorctl --socket=tcp://localhost:2222 work submit mycommand -p /tmp/mypayload -f > /tmp/response
