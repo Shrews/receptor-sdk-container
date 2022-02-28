@@ -37,6 +37,20 @@ This will be the image used in the next steps.
 
 ## Step 3 - Test the Container Image
 
+### Create a virtual Python environment
+
+The examples below make use of `ansible-runner` and `receptorctl` on the host
+machine. If you do not have those installed, this is the simplest way to make
+them available:
+
+```
+  $ python3 -m venv sdk
+  $ source sdk/bin/activate
+  (sdk) $ pip install ansible-runner receptorctl
+```
+
+### Examples
+
 The steps below that use `ansible-runner` use the [demo](https://github.com/ansible/ansible-runner/tree/devel/demo) sample private data directory (or a copy of it) that is included with the [ansible-runner](https://github.com/ansible/ansible-runner) repository. It contains a [test.yml](https://github.com/ansible/ansible-runner/blob/devel/demo/project/test.yml) playbook to run, and is used to generate artifact files when processing the returned data.
 
 The receptor container is configured to use both a TCP socket (port 2222) and
