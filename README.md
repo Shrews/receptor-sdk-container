@@ -38,6 +38,8 @@ Edit `Makefile` to use `gtar` instead of `tar` (just a single place), and then:
 
 Replace any instances of `podman` below with `docker`.
 
+You will not be able to use the Unix domain socket on OSX. See
+[this issue](https://github.com/docker/for-mac/issues/483) for more details.
 
 ## Step 2 - Complete the Container Image Build
 
